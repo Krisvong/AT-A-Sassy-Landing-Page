@@ -1,0 +1,25 @@
+// SCSS Function that determines the appropriate text color based on the background color
+@function text-color-picker($color, $fallback-color: black) {
+    @if lightness($color) > 70 {
+      @return black;
+    } @else {
+      @return $fallback-color;
+    }
+  }
+  
+  
+  // SCSS Mixin called "set-bg" that sets the background color and applies the appropriate text color
+  @mixin set-bg($color) {
+    background-color: $color;
+    color: text-color-picker($color);
+  }
+  
+  // Standard CSS rules for the ".box" class
+  .box {
+    max-width: 1100px;
+    padding: 0 30px;
+    margin: 0 auto;
+    overflow: auto;
+  }
+  
+  

@@ -1,0 +1,35 @@
+// Importing the "utilities" and "config" Sass files
+@import "utilities";
+@import "config";
+
+// Creating a Sass placeholder selector called "%btn" for button styles
+%btn {
+  display: inline-block;
+  border-radius: 5px;
+  padding: 8px 20px;
+  margin: 3px;
+
+  // Adding a hover effect using the "&:hover" selector
+  &:hover {
+    transform: scale(.80);
+  }
+}
+
+// Creating a button style called ".btn-primary" that extends the "%btn" placeholder
+.btn-primary {
+  @extend %btn;
+  
+  // Including a mixin called "set-bg" with a modified color value
+  @include set-bg(lighten($primary-color, 10%));
+
+  // Set the text color to the value of the $secondary-color variable
+  color: $secondary-color;
+}
+
+// Creating a button style called ".btn-secondary" that also extends the "%btn" placeholder
+.btn-secondary {
+  @extend %btn;
+  
+  // Including a mixin called "set-bg" with the original color value
+  @include set-bg($secondary-color);
+}

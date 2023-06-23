@@ -1,24 +1,35 @@
+//gain access to the partials created
+@import "btnConfig";
+@import "utilities";
+@import "config";
 
+
+// Universal styles for all elements
 * {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
 }
 
+// Styles for the body element
 body {
-  background-color: $light-color;
-  font-family: $font-stack;
+  background-color: $light-color; // Assumes a variable named "$light-color" is defined
+  font-family: $font-stack; // Assumes a variable named "$font-stack" is defined
   line-height: 1;
 }
 
+// Styles for images
 img {
   border-radius: 50%;
 }
 
+// Styles for anchor links
 a {
   text-decoration: none;
 }
 
+
+// Styles for the hero class
 .hero {
   // This is where the bulk of the SCSS styling needs to be done
 
@@ -28,10 +39,57 @@ a {
   // 1. $variables
   // 2. nesting (dont forget about the ampersand (&) parent selector!)
   // 3. At-Rules
+  @include set-bg($primary-color);
+height: 600px;
+color: white;
+
+nav {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  ul {
+    display: flex;
+    list-style-type: none;
+  }
+
+  li {
+    padding: 15px;
+  }
+
+  a {
+    color: text-color-picker($primary-color, white); // Providing a fallback color
+  }
+
+  a:hover {
+    color: $secondary-color;
+  }
+  
+}
+
+&-content {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 30px;
+
+  img {
+    width: 50%;
+  }
+
+  h1 {
+    font-size: 50px;
+    line-height: 1.2;
+    color: $light-color;
+  }  
+}
+
 }
 
 // This code is related to some of the aspects of SCSS we have yet to cover.
 // While you don't have to mess with it, it would be advisable to attempt to understand its functionality.
+// SCSS code related to spacing utility classes
 $spaceamounts: (1,2,3,4,5);
 
 @each $space in $spaceamounts {
